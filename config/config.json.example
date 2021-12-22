@@ -1,0 +1,12 @@
+{
+    "Db": {
+        "name": "",
+        "user": "",
+        "pass": "",
+        "driver": ""
+    },
+    "Imdb": 
+    {
+        "apiKey": ""
+    }
+}
