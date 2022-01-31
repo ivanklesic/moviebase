@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{block "title" .}}{{end}}</title>
+</head>
+<main>
+    <header>
+        <a href="/movie/list" id="movies">See all movies</a>
+        <a href="/actor/list" id="actors">See all actors</a>
+    </header>
+    <h1>Moviebase</h1>
+    <small style="color:red">{{.message}}</small>
+    {{block "main" .}}{{end}}
+    <footer>
+        <p>Some kind of footer</p>
+    </footer>
+</main>

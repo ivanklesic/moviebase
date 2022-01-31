@@ -1,0 +1,25 @@
+{{define "title"}}{{if not .actor}}Add new actor{{else}}Edit actor{{end}}{{end}}
+{{define "main"}}
+<form id="actorForm" method="POST" action={{ if .actor }} "/actor/update/{{.actor.Id}}" {{ else }} "/actor/create" {{ end }} enctype="multipart/form-data">
+    <h1>{{if not .actor}} Add new actor {{else}} Edit {{.actor.FirstName}} {{.actor.LastName}} {{end}}</h1>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" {{if .actor}} value="{{.actor.FirstName}}"  {{end}}><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" {{if .actor}} value="{{.actor.LastName}}" {{end}}><br>
+    {{if ne .actor.ImagePath ""}} <img src="/images/actor/{{.actor.ImagePath}}" width="135p" heigth="240p"><br> {{end}}
+    <label for="img">Upload image: (.png or .jpg/.jpeg)</label><br>
+    <input type="file" id="img" name="img" accept="image/*"><br><br>
+    Select movies with this actor:<br>
+    {{range .movies}}
+        {{ $isInMovie := containsId .Id $.actor.MovieIds }}        
+        {{ $indexInArray := getIndexOfArray .Id $.actor.MovieIds}}
+        
+        <input type="checkbox" id="movie{{.Id}}" name="movies[]" value="{{.Id}}" {{if $isInMovie }} checked {{end}}>
+        <label for="movie{{.Id}}">{{.Name}}</label>
+        <label for="role{{.Id}}"> - Role:</label>
+        <input type="text" id="role{{.Id}}" name="role{{.Id}}"
+        {{if gt $indexInArray -1}} value="{{ index $.actor.Roles $indexInArray }}" {{end}}><br>
+    {{end}}
+    <input type="submit" value="Submit">
+</form>
+{{end}}

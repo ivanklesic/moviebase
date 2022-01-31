@@ -1,0 +1,24 @@
+{{define "title"}}Actors{{end}}
+{{define "main"}}
+    <p><a href="/actor/create">Add a new actor</a></p>
+    <table>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Image filename</th>
+          <th>Actions</th>
+        </tr>
+        {{range .actors}}
+        <tr>
+          <td>{{.FirstName}}</td>
+          <td>{{.LastName}}</td>
+          <td>{{.ImagePath}}</td>
+          <td>
+            <a href="/actor/details/{{.Id}}">Details</a> |
+            <a href="/actor/update/{{.Id}}">Edit</a> |
+            <a href="/actor/delete/{{.Id}}">Delete</a>
+          </td>
+        </tr>
+        {{end}}
+      </table>    
+{{end}}

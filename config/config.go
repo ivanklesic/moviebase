@@ -8,6 +8,8 @@ import (
 
 type Configuration struct {
 	Db map[string]string
+	Imdb map[string]string
+	Api map[string]int
 }
 
 func GetConfig() Configuration {
@@ -21,6 +23,6 @@ func GetConfig() Configuration {
 	err = decoder.Decode(&configuration)
 	if err != nil {
 		fmt.Println("error:", err)
-	}	
+	}
 	return configuration
 }

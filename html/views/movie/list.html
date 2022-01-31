@@ -1,0 +1,22 @@
+{{define "title"}}Movies{{end}}
+{{define "main"}}
+    <p><a href="/movie/create">Add a new movie</a></p>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Image filename</th>
+          <th>Actions</th>
+        </tr>
+        {{range .movies}}
+        <tr>
+          <td>{{.Name}}</td>
+          <td>{{.ImagePath}}</td>
+          <td>
+            <a href="/movie/details/{{.Id}}">Details</a> |
+            <a href="/movie/update/{{.Id}}">Edit</a> |
+            <a href="/movie/delete/{{.Id}}">Delete</a>
+          </td>
+        </tr>
+        {{end}}
+      </table>    
+{{end}}

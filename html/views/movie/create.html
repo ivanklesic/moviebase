@@ -1,0 +1,27 @@
+{{define "title"}}{{if not .movie}}Add new movie{{else}}Edit movie{{end}}{{end}}
+{{define "main"}}
+<form id="movieForm" method="POST" action={{ if .movie }} "/movie/update/{{.movie.Id}}" {{ else }} "/movie/create" {{ end }} enctype="multipart/form-data">
+    <h1>{{if not .movie}} Add new movie {{else}} Edit {{.movie.Name}} {{end}}</h1>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" {{if .movie}} value="{{.movie.Name}}"  {{end}}><br>
+    <label for="year">Year of release:</label><br>
+    <input type="text" id="year" name="year" {{if .movie}} value="{{.movie.Year}}"  {{end}}><br>
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" form="movieForm">{{if .movie}}{{.movie.Description}}{{end}}</textarea><br>
+    {{if ne .movie.ImagePath ""}} <img src="/images/movie/{{.movie.ImagePath}}" width="135p" heigth="240p"><br> {{end}}
+    <label for="img">Upload image: (.png or .jpg/.jpeg)</label><br>
+    <input type="file" id="img" name="img" accept="image/*"><br><br>
+    Select actors in this movie:<br>
+    {{range .actors}}
+        {{ $hasActor := containsId .Id $.movie.ActorIds }}        
+        {{ $indexInArray := getIndexOfArray .Id $.movie.ActorIds }}
+        
+        <input type="checkbox" id="actor{{.Id}}" name="actors[]" value="{{.Id}}" {{if $hasActor }} checked {{end}}>
+        <label for="actor{{.Id}}">{{.FirstName}} {{.LastName}}</label>
+        <label for="role{{.Id}}"> - Role:</label>
+        <input type="text" id="role{{.Id}}" name="role{{.Id}}" 
+        {{if gt $indexInArray -1}} value="{{ index $.movie.Roles $indexInArray }}" {{end}}><br>
+    {{end}}
+    <input type="submit" value="Submit">
+</form>
+{{end}}

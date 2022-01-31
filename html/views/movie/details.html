@@ -1,0 +1,21 @@
+{{define "title"}}Movies{{end}}
+{{define "main"}}
+    <p>
+      <h2>{{.movie.Name}}</h2><br>
+      {{.movie.Description}}
+    </p>
+    {{if ne .movie.Rating 0.0}}
+      <h4>Imdb rating: {{.movie.Rating}}</h4>
+    {{end}}    
+    <table>
+        <tr>
+          <th>Actor name</th>
+          <th>Role</th>
+        </tr>
+        {{range $i, $value := .movie.ActorNames}}
+        <tr>
+          <td>{{$value}}</td>
+          <td>{{ index $.movie.Roles $i}}</td>
+        {{end}}
+    </table>
+{{end}}

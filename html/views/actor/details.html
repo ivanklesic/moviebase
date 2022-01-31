@@ -1,0 +1,15 @@
+{{define "title"}}Actors{{end}}
+{{define "main"}}
+    <p><h2>{{.actor.FirstName}} {{.actor.LastName}} filmography</h2></p>
+    <table>
+        <tr>
+          <th>Movie name</th>
+          <th>Role</th>
+        </tr>
+        {{range $i, $value := .actor.MovieNames}}
+        <tr>
+          <td>{{$value}}</td>
+          <td>{{ index $.actor.Roles $i}}</td>
+        {{end}}
+      </table>    
+{{end}}
