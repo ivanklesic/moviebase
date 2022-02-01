@@ -1,5 +1,6 @@
-{
-    "Db": {
+{    
+    "Db": 
+    {
         "name": "",
         "user": "",
         "pass": "",
@@ -8,5 +9,9 @@
     "Imdb": 
     {
         "apiKey": ""
+    },
+    "Api":
+    {
+        "itemsPerPage": 5
     }
 }
