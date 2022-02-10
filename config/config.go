@@ -9,7 +9,7 @@ import (
 type Configuration struct {
 	Db map[string]string
 	Imdb map[string]string
-	Api map[string]int
+	Api map[string]int	
 }
 
 func GetConfig() Configuration {

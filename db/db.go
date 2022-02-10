@@ -18,5 +18,3 @@ func GetConnection() *sql.DB {
 	db.SetMaxIdleConns(10)
 	return db
 }
-
-

@@ -11,7 +11,7 @@
     <input type="file" id="img" name="img" accept="image/*"><br><br>
     Select movies with this actor:<br>
     {{range .movies}}
-        {{ $isInMovie := containsId .Id $.actor.MovieIds }}        
+        {{ $isInMovie := containsId .Id $.actor.MovieIds }}
         {{ $indexInArray := getIndexOfArray .Id $.actor.MovieIds}}
         
         <input type="checkbox" id="movie{{.Id}}" name="movies[]" value="{{.Id}}" {{if $isInMovie }} checked {{end}}>
