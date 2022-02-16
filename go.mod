@@ -9,4 +9,8 @@ require (
 	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d
 )
 
-require github.com/go-logfmt/logfmt v0.5.1 // indirect
+require (
+	github.com/go-logfmt/logfmt v0.5.1 // indirect
+	github.com/lus/fluent.go v0.0.0-20220120131556-7cea7a7799ab
+	golang.org/x/text v0.3.7 // indirect
+)
